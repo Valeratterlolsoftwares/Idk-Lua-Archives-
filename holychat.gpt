@@ -1,0 +1,46 @@
+-- LocalScript to use the UI library
+
+local UI = require(game.ReplicatedStorage:WaitForChild("SimpleUILibrary"))
+
+-- Create a new window
+local Window = UI:MakeWindow({
+    Name = "Example Window",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "ExampleUI"
+})
+
+-- Create a "Player" tab in the window
+local PlayerTab = UI:MakeTab(Window, {
+    Name = "Player"
+})
+
+-- Add a "Walkspeed" slider to the Player tab
+UI:AddSlider(PlayerTab, {
+    Name = "Walkspeed",
+    Min = 16,
+    Max = 100,
+    Default = 16,
+    Increment = 1,
+    ValueName = "Walkspeed",
+    Callback = function(value)
+        print("Walkspeed set to " .. value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+    end
+})
+
+-- Add a "Destroy UI" button to the "Settings" tab
+local SettingsTab = UI:MakeTab(Window, {
+    Name = "Settings"
+})
+
+SettingsTab:AddButton({
+    Name = "Destroy UI",
+    Callback = function()
+        print("Destroying UI...")
+        Window:Destroy()  -- You can add actual destruction logic here
+    end
+})
+
+-- Initialize the library
+UI:Init()
