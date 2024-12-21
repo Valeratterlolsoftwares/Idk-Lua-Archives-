@@ -1,6 +1,6 @@
 -- LocalScript to use the UI library
 
-local UI = require(game.ReplicatedStorage:WaitForChild("SimpleUILibrary"))
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Valeratterlolsoftwares/Idk-Lua-Archives-/refs/heads/main/sunm%20lib.lua"))
 
 -- Create a new window
 local Window = UI:MakeWindow({
